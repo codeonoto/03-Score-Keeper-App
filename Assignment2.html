@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Create separate variables for each vehicle count
+    let carCount = 0;
+    let bikeCount = 0;
+    let scootyCount = 0;
+    let bicycleCount = 0;
+
+    // Create handlers to increase and decrease vehicle count here
+    function addScore(vehicle, num) {
+      switch (vehicle) {
+        case 'car':
+          carCount += num;
+          break;
+        case 'bike':
+          bikeCount += num;
+          break;
+        case 'scooty':
+          scootyCount += num;
+          break;
+        case 'bicycle':
+          bicycleCount += num;
+          break;
+        default:
+          break;
+      }
+      rootElement.render(<App />);
+    }
+
+    const App = () => (
+      <>
+        <p>List of all the vehicles count in the parking.</p>
+        <ol>
+          <li>
+            <p>
+              <b>Car: {carCount}</b> &emsp;
+              {/* Add increase and decrease count buttons here */}
+              <button onClick={() => addScore('car', 1)}>Increase</button>
+              &emsp;
+              <button onClick={() => addScore('car', -1)}>Decrease</button>
+            </p>
+          </li>
+          <li>
+            <p>
+              <b>Bike: {bikeCount}</b> &emsp;
+              {/* Add increase and decrease count buttons here */}
+              <button onClick={() => addScore('bike', 1)}>Increase</button>
+              &emsp;
+              <button onClick={() => addScore('bike', -1)}>Decrease</button>
+            </p>
+          </li>
+          <li>
+            <p>
+              <b>Scooty: {scootyCount}</b> &emsp;
+              {/* Add increase and decrease count buttons here */}
+              <button onClick={() => addScore('scooty', 1)}>Increase</button>
+              &emsp;
+              <button onClick={() => addScore('scooty', -1)}>Decrease</button>
+            </p>
+          </li>
+          <li>
+            <p>
+              <b>Bicycle: {bicycleCount}</b> &emsp;
+              {/* Add increase and decrease count buttons here */}
+              <button onClick={() => addScore('bicycle', 1)}>Increase</button>
+              &emsp;
+              <button onClick={() => addScore('bicycle', -1)}>Decrease</button>
+            </p>
+          </li>
+        </ol>
+      </>
+    );
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+  </script>
+</body>
+
+</html>
